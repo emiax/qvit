@@ -1,0 +1,36 @@
+-- How to create a database that can be interpreted by my program. --
+
+ - Database tables begin with a certain prefix, underscore + class name transformed to plural form.
+ 	ex:
+ 		color_Swatches
+ 		color_Themes
+ 		
+ 	There are two types of tables, "ObjectTables", and "RelationTables".
+ 		
+ - ObjectTables have their corresponding class name inside curly braces in their 'comment'-field.
+ 	ex:
+ 		'Color swatches {Swatch} that do something very fancy and contain information about something nice' 
+ 	or simply:
+ 		'{Swatch}'
+ 		 		
+ 
+ - To create one-to-one/one-to-many relaitons, one of the tables that should be connected to each other
+   should be equipped with a comment on this form:
+   	  { OtherClassName,
+   		ThisRelationNameSingular,
+   		ThisRelationNamePlural,
+   		OtherRelationNameSingular
+   		OtherRelationNamePlural }
+   		
+   		(ThisClassName is determined by the table comment)
+   
+   To create many-to-many relations, create an independent table without comments, and call it what you like.
+   This table should have three columns: a primary key, and two ClassNames of the objects to be related.
+   
+   Each of the rows should have the following comments:
+   	  { ClassName,
+   		RelationNameSingular,
+   		RelationNamePlural }
+   		
+   		
+ 
